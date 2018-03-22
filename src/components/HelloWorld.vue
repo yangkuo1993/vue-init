@@ -37,4 +37,5 @@ export default {
     height: 100%
     h1
       color: red
+      font-size: 32px
 </style>
