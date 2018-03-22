@@ -2,63 +2,7 @@
   <div class="hello" ref="scroll">
     <div>
       <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
-      <h1>{{ msg }}</h1>
+      <button @click="test">test</button>
     </div>
   </div>
 </template>
@@ -78,6 +22,11 @@ export default {
         bounce: false
       })
     })
+  },
+  methods: {
+    test () {
+      this.$store.dispatch('increase')
+    }
   }
 }
 </script>
