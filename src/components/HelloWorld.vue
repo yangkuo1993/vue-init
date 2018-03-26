@@ -25,7 +25,10 @@ export default {
   },
   methods: {
     test () {
-      this.$store.dispatch('increase')
+      // this.$store.dispatch('increase')
+      this.$http.get('/topics').then((data) => {
+        console.log(data)
+      })
     }
   }
 }
