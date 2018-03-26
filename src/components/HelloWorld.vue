@@ -28,6 +28,7 @@ export default {
       // this.$store.dispatch('increase')
       this.$http.get('/topics').then((data) => {
         console.log(data)
+        return data
       })
     }
   }
