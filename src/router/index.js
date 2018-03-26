@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-const Home = () => import('@/views/home/home')
+const Home = () => import(/* webpackChunkName: "home" */ '@/views/home/home')
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -12,3 +12,11 @@ export default new Router({
     }
   ]
 })
+router.beforeEach((to, from, next) => {
+  // ...
+  next()
+})
+router.afterEach((to, from) => {
+  // ...
+})
+export default router
