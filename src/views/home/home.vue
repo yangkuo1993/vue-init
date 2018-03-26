@@ -9,6 +9,7 @@
 
 <script>
 import BScroll from 'better-scroll'
+import urlConfig from '@/config/urlConfig'
 export default {
   name: 'home',
   data () {
@@ -26,7 +27,7 @@ export default {
   methods: {
     test () {
       // this.$store.dispatch('increase')
-      this.$http.get('/topics').then((data) => {
+      this.$http.get(urlConfig.topics).then((data) => {
         console.log(data)
       })
     }
