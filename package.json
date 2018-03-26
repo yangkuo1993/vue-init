@@ -14,7 +14,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "better-scroll": "^1.8.4",
+    "better-scroll": "^1.9.0",
     "cssnano": "^3.10.0",
     "fastclick": "^1.0.6",
     "postcss-aspect-ratio-mini": "^0.0.2",
