@@ -7,12 +7,10 @@ import fastclick from 'fastclick'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 import store from '@/store'
-import axios from '@/api/'
 Vue.config.productionTip = false
 fastclick.attach(document.body)
 
 Vue.use(VueAwesomeSwiper)
-Vue.prototype.$http = axios
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
