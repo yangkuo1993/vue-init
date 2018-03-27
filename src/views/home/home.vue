@@ -9,6 +9,17 @@
         </swiper-slide>
         <swiper-slide>
           <header-tab title-name="主页"></header-tab>
+          <div class="list" v-for="item in list" :key="item.id">
+            <div class="img">
+              <img :src="item.author.avatar_url" alt="">
+            </div>
+            <div class="list-info">
+              <div class="title">{{item.title}}</div>
+              <div>
+                {{item.reply_count}}/{{item.visit_count}}{{item.tab}}
+              </div>
+            </div>
+          </div>
         </swiper-slide>
         <swiper-slide>
           <header-tab title-name="分享"></header-tab>
@@ -32,7 +43,8 @@ export default {
       swiperOption: {
         autoplay: false, // 可选选项，自动滑动
         initialSlide: 2 // 初始化选择第三个
-      }
+      },
+      list: []
     }
   },
   components: {
@@ -48,11 +60,12 @@ export default {
       const topics = {
         page: 1,
         tab: '',
-        limit: 10,
+        limit: 20,
         mdrender: true
       }
       this.$store.dispatch('getTopics', topics).then(data => {
         console.log(data)
+        this.list = data.data
       })
     })
   },
