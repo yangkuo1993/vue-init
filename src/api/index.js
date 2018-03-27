@@ -6,7 +6,6 @@ const $http = axios.create({
 })
 // 请求拦截
 $http.interceptors.request.use((config) => {
-  console.log(config)
   return config
 }, (error) => {
   return Promise.reject(error)
@@ -14,7 +13,6 @@ $http.interceptors.request.use((config) => {
 
 // 响应拦截
 $http.interceptors.response.use((response) => {
-  console.log(response)
   return response.data
 }, (error) => {
   return Promise.reject(error)

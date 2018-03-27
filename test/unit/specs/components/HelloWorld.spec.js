@@ -13,5 +13,6 @@ describe('HelloWorld.vue', () => {
   })
   // 检查函数test
   it('test function test', () => {
+    expect(typeof HelloWorld.methods.test()).toBe('undefined')
   })
 })

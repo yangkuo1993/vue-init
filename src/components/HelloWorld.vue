@@ -9,6 +9,7 @@
 
 <script>
 import BScroll from 'better-scroll'
+import axios from '@/api/'
 export default {
   name: 'HelloWorld',
   data () {
@@ -25,10 +26,8 @@ export default {
   },
   methods: {
     test () {
-      // this.$store.dispatch('increase')
-      this.$http.get('/topics').then((data) => {
-        console.log(data)
-        return data
+      axios.get('/topics').then((data) => {
+      }).catch((error) => {
       })
     }
   }
