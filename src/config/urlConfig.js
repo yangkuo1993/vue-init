@@ -1,4 +1,4 @@
 const urlConfig = {
-  topics: '/topics ' // 获取主题
+  topics: '/topics' // 获取主题
 }
 export default urlConfig

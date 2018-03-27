@@ -1,14 +1,21 @@
 <template>
     <div class="full-content" ref="scroll">
       <swiper :options="swiperOption" ref="mySwiper">
-        <!-- slides -->
-        <swiper-slide>I'm Slide 1</swiper-slide>
-        <swiper-slide>I'm Slide 2</swiper-slide>
-        <swiper-slide>I'm Slide 3</swiper-slide>
-        <swiper-slide>I'm Slide 4</swiper-slide>
-        <swiper-slide>I'm Slide 5</swiper-slide>
-        <swiper-slide>I'm Slide 6</swiper-slide>
-        <swiper-slide>I'm Slide 7</swiper-slide>
+        <swiper-slide>
+          <header-tab title-name="精华"></header-tab>
+        </swiper-slide>
+        <swiper-slide>
+          <header-tab title-name="问答"></header-tab>
+        </swiper-slide>
+        <swiper-slide>
+          <header-tab title-name="主页"></header-tab>
+        </swiper-slide>
+        <swiper-slide>
+          <header-tab title-name="分享"></header-tab>
+        </swiper-slide>
+        <swiper-slide>
+          <header-tab title-name="招聘"></header-tab>
+        </swiper-slide>
       </swiper>
     </div>
 </template>
@@ -16,23 +23,38 @@
 <script>
 import BScroll from 'better-scroll'
 import urlConfig from '@/config/urlConfig'
+import headerTab from '@/components/header/header'
 export default {
   name: 'home',
   data () {
     return {
       msg: '1234',
       swiperOption: {
-        autoplay: true // 可选选项，自动滑动
+        autoplay: false, // 可选选项，自动滑动
+        initialSlide: 2 // 初始化选择第三个
       }
     }
   },
+  components: {
+    headerTab
+  },
   mounted () {
     this.$nextTick(() => {
+      // betterscroll 初始化
       this.scroll = new BScroll(this.$refs.scroll, {
         bounce: false
       })
+      // 初始化调用获取所有接口
+      const topics = {
+        page: 1,
+        tab: '',
+        limit: 10,
+        mdrender: true
+      }
+      this.$store.dispatch('getTopics', topics).then(data => {
+        console.log(data)
+      })
     })
-    this.swiper.slideTo(3, 1000, false)
   },
   methods: {
     test () {
