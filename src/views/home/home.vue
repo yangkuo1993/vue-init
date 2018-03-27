@@ -1,9 +1,15 @@
 <template>
-    <div ref="scroll">
-      <div>
-        <h1>{{ msg }}</h1>
-        <button @click="test">test</button>
-      </div>
+    <div class="full-content" ref="scroll">
+      <swiper :options="swiperOption" ref="mySwiper">
+        <!-- slides -->
+        <swiper-slide>I'm Slide 1</swiper-slide>
+        <swiper-slide>I'm Slide 2</swiper-slide>
+        <swiper-slide>I'm Slide 3</swiper-slide>
+        <swiper-slide>I'm Slide 4</swiper-slide>
+        <swiper-slide>I'm Slide 5</swiper-slide>
+        <swiper-slide>I'm Slide 6</swiper-slide>
+        <swiper-slide>I'm Slide 7</swiper-slide>
+      </swiper>
     </div>
 </template>
 
@@ -14,7 +20,10 @@ export default {
   name: 'home',
   data () {
     return {
-      msg: '1234'
+      msg: '1234',
+      swiperOption: {
+        autoplay: true // 可选选项，自动滑动
+      }
     }
   },
   mounted () {
@@ -23,6 +32,7 @@ export default {
         bounce: false
       })
     })
+    this.swiper.slideTo(3, 1000, false)
   },
   methods: {
     test () {
@@ -31,9 +41,14 @@ export default {
         console.log(data)
       })
     }
+  },
+  computed: {
+    swiper () {
+      return this.$refs.mySwiper.swiper
+    }
   }
 }
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
-
+  @import "./home.styl";
 </style>
