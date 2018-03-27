@@ -4,18 +4,40 @@
   .list
     display flex
     justify-content start
+    padding 40px 20px 40px 40px
+    position relative
     .img
       width 100px
       height 100px
       overflow hidden
       img
         width 100%
+        border-radius 50%
     .list-info
       display flex
       flex-direction column
       justify-content space-between
-      width 650px
+      width 590px
       .title
         white-space nowrap
         text-overflow ellipsis
         overflow hidden
+        font-size 32px
+        color #333
+        box-sizing border-box
+        padding-left 20px
+      .describe
+        box-sizing border-box
+        padding-left 20px
+        font-size 26px
+        color #999999
+  .list:after
+    content ''
+    height 1px
+    width 100%
+    background #E8E8E8
+    position absolute
+    bottom 0
+    left 0
+  .scroll-out
+    height 100%
