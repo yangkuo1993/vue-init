@@ -18,8 +18,14 @@
                 <div class="list-info">
                   <div class="title">{{item.title}}</div>
                   <div class="describe">
-                    {{item.reply_count}}/{{item.visit_count}}{{item.tab}}
-                    <span v-if="item.top">顶</span>
+                    <div>
+                      <span>{{item.reply_count}}/{{item.visit_count}}</span>
+                      <span class="share">{{item.tab}}</span>
+                      <span class="top" v-if="item.top">顶</span>
+                    </div>
+                    <time>
+                      3minutes ago
+                    </time>
                   </div>
                 </div>
               </div>
