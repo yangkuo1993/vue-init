@@ -10,27 +10,7 @@
         <swiper-slide>
           <header-tab title-name="主页"></header-tab>
           <div class="scroll-out" ref="scroll">
-            <div>
-              <div class="list" v-for="item in list" :key="item.id" >
-                <div class="img">
-                  <img v-lazy="item.author.avatar_url" alt="">
-                </div>
-                <div class="list-info">
-                  <div class="title">{{item.title}}</div>
-                  <div class="describe">
-                    <div>
-                      <span>{{item.reply_count}}/{{item.visit_count}}</span>
-                      <span class="share">{{item.tab | newsType}}</span>
-                      <span class="top" v-if="item.top">顶</span>
-                      <span class="good" v-if="item.good">精</span>
-                    </div>
-                    <time>
-                      {{item.last_reply_at | dateAgo}}
-                    </time>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <news-list :news="list"></news-list>
           </div>
         </swiper-slide>
         <swiper-slide>
@@ -47,6 +27,7 @@
 import BScroll from 'better-scroll'
 import urlConfig from '@/config/urlConfig'
 import headerTab from '@/components/header/header'
+import newsList from '@/components/newsList/newsList'
 export default {
   name: 'home',
   data () {
@@ -60,7 +41,8 @@ export default {
     }
   },
   components: {
-    headerTab
+    headerTab,
+    newsList
   },
   mounted () {
     // 初始化调用获取所有接口
