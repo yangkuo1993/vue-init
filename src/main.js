@@ -8,6 +8,7 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 import store from '@/store'
 import VueLazyload from 'vue-lazyload'
+import './filters/filters'
 Vue.use(VueLazyload, {
   preLoad: 1.3,
   error: './static/load.svg',
