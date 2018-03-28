@@ -1,6 +1,6 @@
 <template>
     <div class="full-content">
-      <swiper :options="swiperOption" ref="mySwiper">
+      <swiper :options="swiperOption" ref="mySwiper" @slideChangeTransitionEnd="slideChangeTransitionEnd">
         <swiper-slide>
           <header-tab title-name="精华"></header-tab>
         </swiper-slide>
@@ -9,22 +9,20 @@
         </swiper-slide>
         <swiper-slide>
           <header-tab title-name="主页"></header-tab>
-          <div class="scroll-out" ref="scroll">
-            <news-list :news="list"></news-list>
-          </div>
+          <news-list :news="homeList"></news-list>
         </swiper-slide>
         <swiper-slide>
           <header-tab title-name="分享"></header-tab>
         </swiper-slide>
         <swiper-slide>
           <header-tab title-name="招聘"></header-tab>
+          <news-list :news="homeList"></news-list>
         </swiper-slide>
       </swiper>
     </div>
 </template>
 
 <script>
-import BScroll from 'better-scroll'
 import urlConfig from '@/config/urlConfig'
 import headerTab from '@/components/header/header'
 import newsList from '@/components/newsList/newsList'
@@ -37,7 +35,7 @@ export default {
         autoplay: false, // 可选选项，自动滑动
         initialSlide: 2 // 初始化选择第三个
       },
-      list: []
+      homeList: []
     }
   },
   components: {
@@ -53,14 +51,7 @@ export default {
       mdrender: true
     }
     this.$store.dispatch('getTopics', topics).then(data => {
-      console.log(data)
-      this.list = data.data
-      this.$nextTick(() => {
-        // betterscroll 初始化
-        this.scroll = new BScroll(this.$refs.scroll, {
-          bounce: false
-        })
-      })
+      this.homeList = data.data
     })
   },
   methods: {
@@ -69,6 +60,9 @@ export default {
       this.$http.get(urlConfig.topics).then((data) => {
         console.log(data)
       })
+    },
+    slideChangeTransitionEnd () {
+      console.log(this.swiper.activeIndex)
     }
   },
   computed: {
@@ -78,6 +72,6 @@ export default {
   }
 }
 </script>
-<style lang="stylus" rel="stylesheet/stylus">
+<style scoped lang="stylus" rel="stylesheet/stylus">
   @import "./home.styl";
 </style>
