@@ -13,7 +13,7 @@
             <div>
               <div class="list" v-for="item in list" :key="item.id" >
                 <div class="img">
-                  <img :src="item.author.avatar_url" alt="">
+                  <img v-lazy="item.author.avatar_url" alt="">
                 </div>
                 <div class="list-info">
                   <div class="title">{{item.title}}</div>

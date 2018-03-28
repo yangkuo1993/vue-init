@@ -7,6 +7,13 @@ import fastclick from 'fastclick'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 import store from '@/store'
+import VueLazyload from 'vue-lazyload'
+Vue.use(VueLazyload, {
+  preLoad: 1.3,
+  error: './static/load.svg',
+  loading: require('./assets/images/circles.svg'),
+  attempt: 1
+})
 Vue.config.productionTip = false
 fastclick.attach(document.body)
 
