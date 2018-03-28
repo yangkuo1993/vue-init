@@ -1,14 +1,14 @@
 import Vue from 'vue'
 
 /**
- * 日期格式化
- * @param {[type]} 'dateformat' [description]
- * @param {[type]} (date,       formater      [description]
+ * 新闻类型
+ * @param {[type]} 'newsType' [description]
+ * @param {[type]} (data,       formater      [description]
  * return {[type]}  [description]
  */
-Vue.filter('dateFormatTime', (date) => {
-  if (date) {
-    console.log(date)
-    return date.substring(0, 10)
+Vue.filter('newsType', (data) => {
+  if (data) {
+    const result = data === 'share' ? '分享' : data === 'ask' ? '问答' : data === 'good' ? '精华' : data === 'job' ? '招聘' : ''
+    return result
   }
 })

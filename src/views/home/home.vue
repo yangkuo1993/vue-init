@@ -20,8 +20,9 @@
                   <div class="describe">
                     <div>
                       <span>{{item.reply_count}}/{{item.visit_count}}</span>
-                      <span class="share">{{item.tab | dateFormatTime}}</span>
+                      <span class="share">{{item.tab | newsType}}</span>
                       <span class="top" v-if="item.top">顶</span>
+                      <span class="good" v-if="item.good">精</span>
                     </div>
                     <time>
                       3minutes ago
