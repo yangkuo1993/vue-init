@@ -25,7 +25,7 @@
                       <span class="good" v-if="item.good">精</span>
                     </div>
                     <time>
-                      3minutes ago
+                      {{item.last_reply_at | dateAgo}}
                     </time>
                   </div>
                 </div>
