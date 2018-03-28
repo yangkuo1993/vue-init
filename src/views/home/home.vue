@@ -3,23 +3,23 @@
       <swiper :options="swiperOption" ref="mySwiper" @slideChangeTransitionEnd="slideChangeTransitionEnd">
         <swiper-slide>
           <header-tab title-name="精华"></header-tab>
-          <news-list :news="goodList"></news-list>
+          <news-list :news="good.goodList"></news-list>
         </swiper-slide>
         <swiper-slide>
           <header-tab title-name="问答"></header-tab>
-          <news-list :news="askList"></news-list>
+          <news-list :news="ask.askList"></news-list>
         </swiper-slide>
         <swiper-slide>
           <header-tab title-name="主页"></header-tab>
-          <news-list :news="homeList"></news-list>
+          <news-list :news="home.homeList"></news-list>
         </swiper-slide>
         <swiper-slide>
           <header-tab title-name="分享"></header-tab>
-          <news-list :news="shareList"></news-list>
+          <news-list :news="share.shareList"></news-list>
         </swiper-slide>
         <swiper-slide>
           <header-tab title-name="招聘"></header-tab>
-          <news-list :news="jobList"></news-list>
+          <news-list :news="job.jobList"></news-list>
         </swiper-slide>
       </swiper>
     </div>
@@ -36,11 +36,41 @@ export default {
         autoplay: false, // 可选选项，自动滑动
         initialSlide: 2 // 初始化选择第三个
       },
-      homeList: [],
-      askList: [],
-      goodList: [],
-      shareList: [],
-      jobList: []
+      home: {
+        page: 1,
+        tab: '',
+        limit: 20,
+        mdrender: true,
+        homeList: []
+      },
+      ask: {
+        page: 1,
+        tab: '',
+        limit: 20,
+        mdrender: true,
+        askList: []
+      },
+      good: {
+        page: 1,
+        tab: '',
+        limit: 20,
+        mdrender: true,
+        goodList: []
+      },
+      share: {
+        page: 1,
+        tab: '',
+        limit: 20,
+        mdrender: true,
+        shareList: []
+      },
+      job: {
+        page: 1,
+        tab: '',
+        limit: 20,
+        mdrender: true,
+        jobList: []
+      }
     }
   },
   components: {
@@ -49,7 +79,7 @@ export default {
   },
   mounted () {
     this.lists().then(data => {
-      this.homeList = data.data
+      this.home.homeList = data.data
     })
   },
   methods: {
@@ -66,29 +96,44 @@ export default {
       const newType = this.swiper.activeIndex // 0:精华，1：问答，2：主页，3：分享，4：招聘
       switch (newType) {
         case 0:
-          this.lists({tab: 'good'}).then(data => {
-            this.goodList = data.data
-          })
+          if (!this.good.time || (new Date().getTime() - this.good.time > 60000)) {
+            this.$set(this.good, 'time', new Date().getTime())
+            this.lists({tab: 'good'}).then(data => {
+              this.good.goodList = data.data
+            })
+          }
           break
         case 1:
-          this.lists({tab: 'ask'}).then(data => {
-            this.askList = data.data
-          })
+          if (!this.ask.time || (new Date().getTime() - this.ask.time > 60000)) {
+            this.$set(this.ask, 'time', new Date().getTime())
+            this.lists({tab: 'ask'}).then(data => {
+              this.ask.askList = data.data
+            })
+          }
           break
         case 2:
-          this.lists({tab: ''}).then(data => {
-            this.homeList = data.data
-          })
+          if (!this.home.time || (new Date().getTime() - this.home.time > 60000)) {
+            this.$set(this.home, 'time', new Date().getTime())
+            this.lists({tab: ''}).then(data => {
+              this.homeList = data.data
+            })
+          }
           break
         case 3:
-          this.lists({tab: 'share'}).then(data => {
-            this.shareList = data.data
-          })
+          if (!this.share.time || (new Date().getTime() - this.share.time > 60000)) {
+            this.$set(this.share, 'time', new Date().getTime())
+            this.lists({tab: 'share'}).then(data => {
+              this.share.shareList = data.data
+            })
+          }
           break
         case 4:
-          this.lists({tab: 'job'}).then(data => {
-            this.jobList = data.data
-          })
+          if (!this.job.time || (new Date().getTime() - this.job.time > 60000)) {
+            this.$set(this.job, 'time', new Date().getTime())
+            this.lists({tab: 'job'}).then(data => {
+              this.job.jobList = data.data
+            })
+          }
           break
         default:
           this.lists()
