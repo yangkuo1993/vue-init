@@ -1,15 +1,22 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-
+const Home = () => import(/* webpackChunkName: "home" */ '@/views/home/home')
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Home',
+      component: Home
     }
   ]
 })
+router.beforeEach((to, from, next) => {
+  // ...
+  next()
+})
+router.afterEach((to, from) => {
+  // ...
+})
+export default router
