@@ -1,20 +1,25 @@
 <template>
   <div class="hello" ref="scroll">
     <div>
-      <h1>{{ msg }}</h1>
-      <button @click="test">test</button>
+      <game :width="width" :height="height"></game>
     </div>
   </div>
 </template>
 
 <script>
 import BScroll from 'better-scroll'
+import Game from './Game'
 export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      width: document.documentElement.clientWidth,
+      height: document.documentElement.clientHeight
     }
+  },
+  components: {
+    Game
   },
   mounted () {
     this.$nextTick(() => {
